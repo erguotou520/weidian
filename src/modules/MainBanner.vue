@@ -1,16 +1,25 @@
 <template>
-  <swipe :autoplay="3000" :height="120">
-    <swipe-item v-for="n in 3" :key="n">{{n+1}}</swipe-item>
-  </swipe>
+  <van-swipe class="swipe" :autoplay="3000">
+    <van-swipe-item v-for="(item, index) in list" :key="index"
+      class="swipe-item"
+      v-lazy:background-image="item.img">
+    </van-swipe-item>
+  </van-swipe>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { Swipe, SwipeItem } from 'vant';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-@Component({
-  components: {
-    Swipe, SwipeItem
-  }
-})
-export default class MainBanner extends Vue {}
+@Component
+export default class MainBanner extends Vue {
+  @Prop(Array) private list!: any[];
+}
 </script>
+<style scoped>
+.swipe {
+  height: 26vh;
+}
+.swipe-item {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+</style>
