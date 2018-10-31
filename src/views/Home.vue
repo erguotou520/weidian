@@ -8,12 +8,12 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { Getter } from 'vuex-class';
+import { TopItem, Product } from '../types';
 
-import { get } from '../http'
-
-import MainBanner from './modules/MainBanner.vue';
-import MainProducts from './modules/MainProducts.vue';
-import DividerTitle from './components/DividerTitle.vue';
+import MainBanner from '../modules/MainBanner.vue';
+import MainProducts from '../modules/MainProducts.vue';
+import DividerTitle from '../components/DividerTitle.vue';
 
 @Component({
   components: {
@@ -21,14 +21,8 @@ import DividerTitle from './components/DividerTitle.vue';
   }
 })
 export default class App extends Vue {
-  public topList: any[] = [];
-  public recommandList: any[] = [];
-
-  private async mounted() {
-    const res: any = await get(`${process.env.BASE_URL}home.json`);
-    this.topList = res.topList;
-    this.recommandList = res.recommandList;
-  }
+  @Getter private topList!: TopItem[];
+  @Getter private recommandList!: Product[];
 }
 </script>
 <style>

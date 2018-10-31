@@ -15,26 +15,26 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class HeaderPage extends Vue {
   @Prop(String)
   private title!: string;
-  
+
   @Prop({ type: Boolean, default: true })
   private fixed?: boolean;
 
   @Prop(String)
   private rightText?: string;
 
-  public back () {
+  public back() {
     this.$router.go(-1);
   }
 }
 </script>
 <style lang="postcss">
-.header-page
+.header-page {
   &.fixed-header {
     & .page-container {
       padding-top: 107.8125px;

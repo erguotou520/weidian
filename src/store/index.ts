@@ -1,47 +1,50 @@
 import Vue from 'vue';
-import Vuex, { MutationTree, ActionTree, StoreOptions } from 'vuex';
+import Vuex, { MutationTree, ActionTree, Store, GetterTree } from 'vuex';
+import { RootState, Product, TopItem } from '../types';
 
-interface RootState {
-  topList: any[],
-  recommandList: any[],
-  detailProduct: any
-}
+Vue.use(Vuex);
 
 const state = {
   topList: [],
   recommandList: [],
-  detailProduct: {}
-}
+  detailProduct: null
+};
 
 const mutations: MutationTree<RootState> = {
-  SET_TOP_LIST (state, list) {
-    state.topList = list
+  SET_TOP_LIST(state, list: TopItem[]) {
+    state.topList = list;
   },
-  SET_RECOMMAND_LIST (state, list) {
-    state.recommandList = list
+  SET_RECOMMAND_LIST(state, list: Product[]) {
+    state.recommandList = list;
   },
-  SET_DETAIL_PRODUCT (state, product) {
-    state.detailProduct = product
+  SET_DETAIL_PRODUCT(state, product: Product | null) {
+    state.detailProduct = product;
   }
-}
+};
 
-const actions: ActionTree<> = {
-  async requestHomeList () {
-
+const actions: ActionTree<RootState, RootState> = {
+  async requestHomeList({ commit }) {
+    const res = await fetch(`${process.env.BASE_URL}home.json`);
+    const json = await res.json()
+    commit('SET_TOP_LIST', json.topList);
+    commit('SET_RECOMMAND_LIST', json.recommandList);
   },
-  setDetailProduct ({ commit }, product) {
-    commit('SET_DETAIL_PRODUCT', product)
+  setDetailProduct({ commit }, product: Product) {
+    commit('SET_DETAIL_PRODUCT', product);
   }
-}
+};
 
-const getters = {}
+const getters: GetterTree<RootState, RootState> = {
+  topList: (state) => state.topList,
+  recommandList: (state) => state.recommandList
+};
 
-const store: StoreOptions<RootState> = new Vuex.Store({
+const store: Store<RootState> = new Vuex.Store({
   state,
   mutations,
   actions,
   getters,
   strict: process.env.NODE_ENV === 'development'
-})
+});
 
-export default store
+export default store;

@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Home from './views/Home.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   linkActiveClass: 'active',
@@ -11,7 +11,7 @@ const router = new Router({
     {
       path: '/',
       component: {
-        render: h => h('router-view')
+        render: (h) => h('router-view')
       },
       children: [
         {
@@ -31,6 +31,6 @@ const router = new Router({
       redirect: '/'
     }
   ]
-})
+});
 
-export default router
+export default router;
