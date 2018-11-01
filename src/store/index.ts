@@ -6,8 +6,7 @@ Vue.use(Vuex);
 
 const state = {
   topList: [],
-  recommandList: [],
-  detailProduct: null
+  recommandList: []
 };
 
 const mutations: MutationTree<RootState> = {
@@ -16,9 +15,6 @@ const mutations: MutationTree<RootState> = {
   },
   SET_RECOMMAND_LIST(state, list: Product[]) {
     state.recommandList = list;
-  },
-  SET_DETAIL_PRODUCT(state, product: Product | null) {
-    state.detailProduct = product;
   }
 };
 
@@ -28,9 +24,6 @@ const actions: ActionTree<RootState, RootState> = {
     const json = await res.json()
     commit('SET_TOP_LIST', json.topList);
     commit('SET_RECOMMAND_LIST', json.recommandList);
-  },
-  setDetailProduct({ commit }, product: Product) {
-    commit('SET_DETAIL_PRODUCT', product);
   }
 };
 

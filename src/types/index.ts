@@ -3,6 +3,7 @@ export interface TopItem {
 }
 
 export interface Product {
+  id: string;
   title: string;
   description: string;
   img: string;
@@ -11,5 +12,4 @@ export interface Product {
 export interface RootState {
   topList: TopItem[];
   recommandList: Product[];
-  detailProduct: Product | null;
 }

@@ -1,6 +1,7 @@
 <template>
   <div class="header-page" :class="{'fixed-header':fixed}">
     <van-nav-bar
+      left-arrow
       :title="title"
       :fixed="fixed"
       :right-text="rightText"
@@ -37,7 +38,7 @@ export default class HeaderPage extends Vue {
 .header-page {
   &.fixed-header {
     & .page-container {
-      padding-top: 107.8125px;
+      padding-top: 46px;
     }
   }
 }

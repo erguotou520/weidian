@@ -16,16 +16,16 @@ export default class DividerTitle extends Vue {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 72px;
-  font-size: 30px;
+  height: 36px;
+  font-size: 15px;
   color: #000;
 }
 .divider-title::before,
 .divider-title::after {
   content: '';
-  width: 40px;
-  height: 2px;
-  margin: 0 26px;
+  width: 20px;
+  height: 1px;
+  margin: 0 13px;
   background-color: #999;
 }
 </style>

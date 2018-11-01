@@ -1,17 +1,19 @@
 <template>
   <van-swipe class="swipe" :autoplay="3000">
-    <van-swipe-item v-for="(item, index) in list" :key="index"
+    <van-swipe-item v-for="(item, index) in topList" :key="index"
       class="swipe-item"
       v-lazy:background-image="item.img">
     </van-swipe-item>
   </van-swipe>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
+import { Getter } from 'vuex-class';
+import { TopItem } from '../types';
 
 @Component
 export default class MainBanner extends Vue {
-  @Prop(Array) private list!: any[];
+  @Getter private topList!: TopItem[];
 }
 </script>
 <style scoped>

@@ -17,12 +17,20 @@ const router = new Router({
         {
           path: '/',
           name: 'home',
-          component: Home
+          component: Home,
+          meta: { order: 1 }
         },
         {
           path: '/product/:id',
           name: 'product',
-          component: () => import(/* webpackChunkName: "views/product" */ './views/Product.vue')
+          component: () => import(/* webpackChunkName: "views/product" */ './views/Product.vue'),
+          meta: { order: 10 }
+        },
+        {
+          path: '/apply',
+          name: 'apply',
+          component: () => import(/* webpackChunkName: "views/apply" */ './views/Apply.vue'),
+          meta: { order: 10 }
         }
       ]
     },
