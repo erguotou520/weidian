@@ -21,7 +21,7 @@ const mutations: MutationTree<RootState> = {
 const actions: ActionTree<RootState, RootState> = {
   async requestHomeList({ commit }) {
     const res = await fetch(`${process.env.BASE_URL}home.json`);
-    const json = await res.json()
+    const json = await res.json();
     commit('SET_TOP_LIST', json.topList);
     commit('SET_RECOMMAND_LIST', json.recommandList);
   }

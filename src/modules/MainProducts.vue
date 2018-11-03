@@ -14,13 +14,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Getter, Action } from 'vuex-class';
-import { Product } from '../types'
+import { Product } from '../types';
 
 @Component
 export default class MainProducts extends Vue {
   @Getter private recommandList!: Product[];
-  toDetail (product: Product) {
-    this.$router.push({ name: 'product', params: { id: product.id } })
+  public toDetail(product: Product) {
+    this.$router.push({ name: 'product', params: { id: product.id } });
   }
 }
 </script>

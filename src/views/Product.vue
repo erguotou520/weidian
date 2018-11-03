@@ -11,15 +11,15 @@
 </template>
 <script lang="ts">
 import { Prop, Component, Vue } from 'vue-property-decorator';
-import { Getter } from "vuex-class";
+import { Getter } from 'vuex-class';
 import { Product } from '../types';
 
 @Component
 export default class ViewProduct extends Vue {
-  private str: string = "";
+  private str: string = '';
   @Getter private recommandList!: Product[];
-  private get product () {
-    return this.recommandList.find(product => product.id === this.$route.params.id)
+  private get product() {
+    return this.recommandList.find((product) => product.id === this.$route.params.id);
   }
 }
 </script>

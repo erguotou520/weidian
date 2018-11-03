@@ -22,7 +22,7 @@ import DividerTitle from '../components/DividerTitle.vue';
   }
 })
 export default class ViewHome extends Vue {
-  
+
 }
 </script>
 <style>
